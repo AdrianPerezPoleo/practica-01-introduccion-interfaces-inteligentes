@@ -27,7 +27,6 @@ Para realizar este ejercicio tuve que aprender tres ideas:
 - C# cuenta con una clase Random que permite, utilizando `Random.Range`, generar números aleatorios tanto enteros como de punto flotante. Esto fue esencial para generar, tanto la nueva posición del color a modificar como e nuevo valor a introducir para generar el color.
 
 ### Ejecución
-A continuación se muestra, en una imagen GIF, el resultado del ejercicio:
 
 ![](images/Ejercicio01.gif)
 
@@ -45,3 +44,23 @@ El objetivo de este ejercicio fue aplicar operaciones de vectores en Unity utili
 ### Ejecución
 
 ![](images/Ejercicio02.gif)
+
+## Ejercicio 03. Texto en Pantalla
+El fichero con el código se encuentra en [Scripts/Ejercicio03Posicion.cs](Scripts/Ejercicio03Posicion.cs)
+
+### Descripción
+
+En este ejercicio, el objetivo era integrar elementos de interfaz gráfica de usuario en la escena 3D para transmitir información del estado de juego en pantalla. En concreto, la idea era proyectar las coordenadas tridimensionales de la esfera en tiempo real según se iba desplazando por el espacio.
+
+### Implementación
+En este caso tuve que buscar algo más de información acerca de Canvas y de cómo mostrar texto que se viera en la cámara.
+
+- Para ello tuve que crear en la jerarquñia un objetos `Canvas` que tenía como hijo un componente de texto llamado `TextMeshProUGUI`. Este elemento de texto es el que recoge el script para actualizarlo y mostrar el contenido deseado.
+
+- En el script, se cogen las coordenadas (en forma de `Vector3`) de la esfera y se pasan a cadena de texto (con el meto `ToString()`). Este texto s epone en el atributo `.text` del componente de texto, para que este se actualice y muestre en pantalla las coordenadas en tiempo real.
+
+- En este caso fue necesario comprobar que el componente de texto no fuera nulo para evitar excepciones. Además, se tuvo que desactivar el wrapping para que el texto no se dividiera en filas.
+
+### Ejecución
+
+![](images/Ejercicio03.gif)
