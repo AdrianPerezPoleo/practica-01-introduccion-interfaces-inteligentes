@@ -13,6 +13,8 @@ Para llevara  cabo la implementación de las diferentes funcionalidades, ha sido
 
 ## Ejercicio 01. Colores.
 
+El fichero con el código se encuentra en [Scripts/Ejercicio01Color.cs](Scripts/Ejercicio01Color.cs)
+
 ### Descripción
 En este primer ejercicio se buscaba cambiar el color de un cubo de forma periódica (tras un intervalo de frames que podían ser introducidos por el usuario a través del inspector).
 
@@ -28,3 +30,18 @@ Para realizar este ejercicio tuve que aprender tres ideas:
 A continuación se muestra, en una imagen GIF, el resultado del ejercicio:
 
 ![](images/Ejercicio01.gif)
+
+## Ejercicio 02. Vectores
+El fichero con el código se encuentra en [Scripts/Ejercicio02Vectors.cs](Scripts/Ejercicio02Vectors.cs)
+
+### Descripción
+El objetivo de este ejercicio fue aplicar operaciones de vectores en Unity utilizando la clase `Vector3`. Para ello, se debían colocar dos vectores en el inspecto y, a partir de sus coordenadas, se mostró la magnitud, el ángulo que formaban, la distancia que los separaba y cuál estaba a mayor altura. 
+
+### Implementación
+- La realización de los cálculos fue bastante sencilla gracias a las múltiples facilidades que aporta la clase [Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html). Fueron necesarios métodos como `Vector3.Angle()`, `Vetor3.Distance()` y los atributos `.magnitude` y `.y`.
+
+- Además, aunque no se pidiera expresamente, para no saturar la terminal con mensajes en cada frame, el script almacena el estado de los vectores en el frame anterior. De esta manera, se puede usar un `return` temprano que evite mostrar mensajes cuando los datos de entrada no han cambiado.
+
+### Ejecución
+
+![](images/Ejercicio02.gif)
