@@ -1,8 +1,11 @@
 # Práctica 01. Introducción C# - Scripts.
 
 ## Índice
-
-
+* [Introducción](#introducción)
+* [Ejercicio 01. Colores](#ejercicio-01-colores)
+* [Ejercicio 02. Vectores](#ejercicio-02-vectores)
+* [Ejercicio 03. Texto en Pantalla](#ejercicio-03-texto-en-pantalla)
+* [Ejercicio 04. Distancia entre Cubo y Cilindro](#ejercicio-04-distancia-entre-cubo-y-cilindro)
 
 
 ## Introducción
@@ -24,7 +27,7 @@ Para realizar este ejercicio tuve que aprender tres ideas:
 
 - El componente `Renderer` es el que permite, a través de la propiedad `material.color` cambiar el color del objeto.
 
-- C# cuenta con una clase Random que permite, utilizando `Random.Range`, generar números aleatorios tanto enteros como de punto flotante. Esto fue esencial para generar, tanto la nueva posición del color a modificar como e nuevo valor a introducir para generar el color.
+- C# cuenta con una clase Random que permite, utilizando `Random.Range`, generar números aleatorios tanto enteros como de punto flotante. Esto fue esencial para generar, tanto la nueva posición del color a modificar como el nuevo valor a introducir para generar el color.
 
 ### Ejecución
 
@@ -34,7 +37,7 @@ Para realizar este ejercicio tuve que aprender tres ideas:
 El fichero con el código se encuentra en [Scripts/Ejercicio02Vectors.cs](Scripts/Ejercicio02Vectors.cs)
 
 ### Descripción
-El objetivo de este ejercicio fue aplicar operaciones de vectores en Unity utilizando la clase `Vector3`. Para ello, se debían colocar dos vectores en el inspecto y, a partir de sus coordenadas, se mostró la magnitud, el ángulo que formaban, la distancia que los separaba y cuál estaba a mayor altura. 
+El objetivo de este ejercicio fue aplicar operaciones de vectores en Unity utilizando la clase `Vector3`. Para ello, se debían colocar dos vectores en el inspector y, a partir de sus coordenadas, se mostró la magnitud, el ángulo que formaban, la distancia que los separaba y cuál estaba a mayor altura. 
 
 ### Implementación
 - La realización de los cálculos fue bastante sencilla gracias a las múltiples facilidades que aporta la clase [Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html). Fueron necesarios métodos como `Vector3.Angle()`, `Vetor3.Distance()` y los atributos `.magnitude` y `.y`.
@@ -55,12 +58,30 @@ En este ejercicio, el objetivo era integrar elementos de interfaz gráfica de us
 ### Implementación
 En este caso tuve que buscar algo más de información acerca de Canvas y de cómo mostrar texto que se viera en la cámara.
 
-- Para ello tuve que crear en la jerarquñia un objetos `Canvas` que tenía como hijo un componente de texto llamado `TextMeshProUGUI`. Este elemento de texto es el que recoge el script para actualizarlo y mostrar el contenido deseado.
+- Para ello tuve que crear en la jerarquía un objetos `Canvas` que tenía como hijo un componente de texto llamado `TextMeshProUGUI`. Este elemento de texto es el que recoge el script para actualizarlo y mostrar el contenido deseado.
 
-- En el script, se cogen las coordenadas (en forma de `Vector3`) de la esfera y se pasan a cadena de texto (con el meto `ToString()`). Este texto s epone en el atributo `.text` del componente de texto, para que este se actualice y muestre en pantalla las coordenadas en tiempo real.
+- En el script, se cogen las coordenadas (en forma de `Vector3`) de la esfera y se pasan a cadena de texto (con el método `ToString()`). Este texto se pone en el atributo `.text` del componente de texto, para que se actualice y muestre en pantalla las coordenadas en tiempo real.
 
 - En este caso fue necesario comprobar que el componente de texto no fuera nulo para evitar excepciones. Además, se tuvo que desactivar el wrapping para que el texto no se dividiera en filas.
 
 ### Ejecución
 
 ![](images/Ejercicio03.gif)
+
+## Ejercicio 04. Distancia entre Cubo y Cilindro
+
+El fichero con el código se encuentra en [Scripts/Ejercicio04DistanciaCuboCilindro.cs](Scripts/Ejercicio04DistanciaCuboCilindro.cs)
+
+### Descripción
+En este último ejercicio se pedía implementar la localización dinámica de objetos mediante el sistema de etiquetas de Unity. A partir de la esfera, que tenía al script como componente, se debían obtener las referencias al Cubo y al Cilindro para obtener sus coordenadas y calcular la distancia entre uno y otro.
+
+### Implementación
+- En primer lugar, fue necesario crear tags (en mi caso se llamaron `Colored Cube` y `Grey-Cylinder`) y asignarlos en el inspector a los respectivos objetos. Esto permitió utilizar el método `GameObject.FindWithTag()` en el script durante la fase de inicialización.
+
+- En cada frame, se leyeron las propiedades `.position` actualizadas y gracias al método `Vector3.Distance()` se pudo determinar la distancia entre el Cubo y el Cilindro.
+
+- Además, para no saturar la terminal, como ya hicimos en un ejercicio anterior, se almacena la posición anterior de ambos objetos esperando a que cambien para volver a realizar el cálculo de la distancia.
+
+### Ejecución
+
+![](images/Ejercicio04.gif)
